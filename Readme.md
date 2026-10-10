@@ -12,4 +12,4 @@ Ramo de atuação: O pet shop atua no setor de comércio e serviços para animai
 Problemas:
 Falta de organização no controle de estoque, dificuldade no gerenciamento de pedidos, atendimento manual e demorado aos clientes, pouca presença digital e perda de vendas online, falta de controle financeiro eficiente.
 
-OBS: isso são possíveis problemas que podem ocorrer durante a montagem do site Resumo do projeto: O projeto consiste no desenvolvimento de um sistema web (Site) para um pet shop, com o objetivo de organizar processos internos e exibir o catálogo de serviços online. Melhorando o controle de vendas e estoque, e ampliando a presença no digital da empresa. sla
+OBS: isso são possíveis problemas que podem ocorrer durante a montagem do site Resumo do projeto: O projeto consiste no desenvolvimento de um sistema web (Site) para um pet shop, com o objetivo de organizar processos internos e exibir o catálogo de serviços online. Melhorando o controle de vendas e estoque, e ampliando a presença no digital da empresa.

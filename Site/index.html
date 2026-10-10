@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- Diz ao navegador que este arquivo é HTML5 -->
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <!-- Faz o site se ajustar à tela do celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heros Pet</title>
+  <!-- Liga este HTML ao arquivo de estilos (o visual fica no CSS) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. CABEÇALHO: logo, busca e ícones (entrega, carrinho, atendimento, perfil, favoritos) -->
+  <header class="cabecalho">
+    <a href="index.html" class="logo">Heros Pet</a>
+    <input type="search" class="busca" placeholder="Para seu pet, você encontra aqui">
+    <nav class="icones">
+      <!-- Cada link vai levar a uma página. Por enquanto, '#' significa "ainda sem destino" -->
+      <a href="#">Entrega</a>
+      <a href="#">Carrinho</a>
+      <a href="#">Atendimento</a>
+      <a href="#">Perfil</a>
+      <a href="#">Favoritos</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 2. BANNERS DE OFERTA: dois blocos lado a lado -->
+    <section class="banners">
+      <article class="banner">
+        <h2>Oferta 40%</h2>
+        <p>Em produtos para Cães!</p>
+        <!-- Troque pelo nome real do arquivo quando tiver a foto -->
+        <img src="imagens/cachorro.png" alt="Cachorro">
+      </article>
+      <article class="banner">
+        <h2>Oferta 35%</h2>
+        <p>Em produtos para Gatos!</p>
+        <img src="imagens/gato.png" alt="Gato">
+      </article>
+    </section>
+
+    <!-- 3. FAIXA DE MEMBROS (primeira) -->
+    <section class="faixa">
+      <p>Se torne membro e aproveite as <strong>OFERTAS!</strong></p>
+    </section>
+
+    <!-- 4. POPULARES: um bloco por categoria, cada um com seus produtos -->
+    <section class="populares">
+      <h2>Populares entre os consumidores</h2>
+
+      <div class="grupo">
+        <h3>Rações</h3>
+        <!-- Cada produto é um 'article'. Copie e cole para adicionar mais -->
+        <article class="produto">
+          <img src="imagens/racao-caes.png" alt="Special Dog Adultos Premium">
+          <p>Special Dog Adultos Premium</p>
+        </article>
+        <article class="produto">
+          <img src="imagens/racao-gatos.png" alt="Ração gato castrado">
+          <p>Ração gato castrado</p>
+        </article>
+      </div>
+
+      <div class="grupo">
+        <h3>Petiscos</h3>
+        <article class="produto">
+          <img src="imagens/petisco.png" alt="Petisco">
+          <p>Petisco</p>
+        </article>
+      </div>
+
+      <div class="grupo">
+        <h3>Acessórios</h3>
+        <article class="produto">
+          <img src="imagens/caixa-transporte.png" alt="Caixa de transporte">
+          <p>Caixa de transporte</p>
+        </article>
+      </div>
+
+      <div class="grupo">
+        <h3>Aquários</h3>
+        <article class="produto">
+          <img src="imagens/aquario.png" alt="Aquário">
+          <p>Aquário</p>
+        </article>
+      </div>
+
+      <div class="grupo">
+        <h3>Brinquedos</h3>
+        <article class="produto">
+          <img src="imagens/brinquedo.png" alt="Brinquedo">
+          <p>Brinquedo</p>
+        </article>
+      </div>
+
+      <div class="grupo">
+        <h3>Saúde</h3>
+        <article class="produto">
+          <img src="imagens/vermifugo.png" alt="Vermífugo">
+          <p>Vermífugo</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. SEÇÕES DO SITE: cada item leva a uma página de categoria -->
+    <section class="secoes">
+      <h2>Clique na seção que deseja para ver todos os produtos disponíveis!</h2>
+      <nav>
+        <a href="gatos.html">Gatos</a>
+        <a href="aves.html">Aves</a>
+        <a href="roedores.html">Roedores</a>
+        <a href="peixes.html">Peixe</a>
+        <a href="caes.html">Cães</a>
+        <a href="pesca.html">Pesca</a>
+      </nav>
+    </section>
+
+    <!-- 6. FAIXA DE MEMBROS (segunda) -->
+    <section class="faixa">
+      <p>Membros têm desconto exclusivo todo mês! Clique <a href="#">aqui</a> e se torne um, é rápido e econômico!</p>
+    </section>
+
+  </main>
+
+  <!-- 7. RODAPÉ: buscas frequentes, glossário de marcas e informações da empresa -->
+  <footer class="rodape">
+    <h2>Mais buscados:</h2>
+    <ul>
+      <li>Pet Shop</li>
+      <li>Ração para Cães</li>
+      <li>Nexgard</li>
+      <li>Simparic</li>
+    </ul>
+    <p>Glossário de marcas: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+    <small>Para valores diferentes, o preço final será sempre o do carrinho de compras.</small>
+  </footer>
+
+</body>
+</html>

@@ -1,10 +1,12 @@
 Integrantes do Grupo:
-Victor Matheus Almeida dos Santos RA: 3025202476
-Leonardo Dias de Queiroz RA: 3025201883
-Victor Hugo Navarro Gianso RA: 3025200098
-Vinicius Teixeira Veiga RA: 3025202969
-Lucas Ganaha Ariente RA: 3025106006
-Renner Soares Lima Ra: 3025200150
+
+Victor Matheus Almeida dos Santos RA: 3025202476                                            
+Leonardo Dias de Queiroz RA: 3025201883                       
+Victor Hugo Navarro Gianso RA: 3025200098                             
+Vinicius Teixeira Veiga RA: 3025202969                     
+Lucas Ganaha Ariente RA: 3025106006                                           
+Renner Soares Lima Ra: 3025200150                                             
+
 Nome da Empresa: PetVida
 
 Ramo de atuação: O pet shop atua no setor de comércio e serviços para animais de estimação.

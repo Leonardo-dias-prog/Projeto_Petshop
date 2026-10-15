@@ -1,0 +1,205 @@
+/* ===== CORES (variáveis: mude aqui e muda no site todo) ===== */
+:root {
+  --fundo: #f5eab0;
+  --laranja: #ff7a1a;
+  --laranja-claro: #f4a261;
+  --azul: #0b3fa8;
+  --amarelo: #ffd633;
+  --card: #ffe56b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--azul);
+  font-family: Arial, sans-serif;
+}
+
+img { max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* Fonte chamativa nos títulos */
+h1, h2, h3, .logo, .rotulo { font-family: "Lilita One", Arial, sans-serif; font-weight: normal; }
+
+/* ===== 1. CABEÇALHO =====
+   display: flex coloca os itens lado a lado */
+.cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px;
+  padding: 8px 14px;
+  background: var(--laranja);
+  border-radius: 14px;
+}
+.logo { font-size: 28px; color: var(--azul); }
+.busca {
+  flex: 1; /* ocupa todo o espaço que sobrar */
+  padding: 10px 16px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+}
+.icones { display: flex; gap: 10px; }
+.icones a {
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  background: #fff;
+  border-radius: 50%;
+}
+
+/* ===== 2. BANNERS: dois lado a lado ===== */
+.banners {
+  display: flex;
+  gap: 16px;
+  margin: 24px 20px;
+}
+.banner {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: var(--laranja);
+  border: 8px solid var(--laranja-claro);
+  border-radius: 16px;
+  color: var(--amarelo);
+  min-height: 230px;
+}
+.banner h2 { margin: 0; font-size: 44px; }
+.banner h2 span { font-size: 64px; }
+.banner p { font-size: 26px; margin: 8px 0 0; font-family: "Lilita One", Arial, sans-serif; }
+.banner img { max-height: 200px; }
+.banner img[alt="Gato"] { max-height: 200px; transform: translate(-80px, 10px); }
+
+/* ===== 3. FAIXAS ===== */
+.faixa {
+  margin: 20px;
+  padding: 18px;
+  text-align: center;
+  background: var(--laranja);
+  border: 6px solid var(--laranja-claro);
+  border-radius: 14px;
+  font-family: "Lilita One", Arial, sans-serif;
+  font-size: 32px;
+}
+.destaque { color: var(--amarelo); text-decoration: underline; }
+.faixa-amarela { color: var(--amarelo); font-size: 28px; }
+.faixa-amarela a { color: var(--azul); text-decoration: underline; }
+
+/* ===== 4. POPULARES ===== */
+.titulo-azul {
+  display: table; /* faz a caixa abraçar o texto */
+  margin: 30px auto 24px;
+  padding: 6px 20px;
+  background: var(--azul);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 26px;
+}
+.colunas {
+  display: flex;
+  gap: 16px;
+  margin: 0 20px;
+  align-items: flex-start;
+}
+.coluna { flex: 1; display: flex; flex-direction: column; gap: 28px; }
+
+.grupo {
+  position: relative;
+  padding: 26px 14px 14px;
+  background: var(--fundo);
+  border: 5px solid var(--azul);
+  border-radius: 14px;
+  outline: 5px solid var(--laranja-claro); /* contorno laranja por fora */
+  outline-offset: 2px;
+}
+.grupo h3 {
+  position: absolute; /* título "pendurado" na borda de cima */
+  top: -18px; left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 4px 22px;
+  background: var(--azul);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 18px;
+}
+/* grid: 2 colunas de produtos */
+.produtos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.produto {
+  position: relative;
+  min-height: 150px;
+  padding: 10px;
+  background: var(--card);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+.produto img { max-height: 110px; }
+.produto img[alt="Special Dog Adultos Premium"] { max-height: 150px; transform: translate(0px, 10px); }
+.produto p { margin: 6px 0 0; }
+.fav { position: absolute; top: 6px; right: 8px; font-size: 18px; }
+
+/* ===== 5. SEÇÕES (Gatos, Aves...) ===== */
+.secoes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin: 50px 20px;
+}
+.caixa-laranja {
+  max-width: 330px;
+  margin: 0;
+  padding: 20px;
+  background: var(--laranja);
+  border: 6px solid var(--laranja-claro);
+  border-radius: 14px;
+  text-align: center;
+  font-size: 34px;
+  line-height: 1.2;
+}
+.secoes-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px 40px; }
+.secoes-links a { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.circulo {
+  width: 100px; height: 100px;
+  display: grid; place-items: center;
+  border: 5px solid var(--azul);
+  border-radius: 50%;
+  background: var(--amarelo);
+  font-size: 48px;
+}
+.rotulo { padding: 2px 22px; background: var(--azul); color: #fff; border-radius: 10px; }
+
+/* ===== 7. RODAPÉ ===== */
+.rodape {
+  margin-top: 40px;
+  padding: 24px 40px;
+  background: #f58a42;
+  text-align: center;
+  font-size: 13px;
+}
+.rodape .titulo-azul { margin-left: 0; font-size: 18px; }
+.mais-buscados {
+  list-style: none;
+  margin: 0 auto 24px;
+  padding: 0;
+  max-width: 900px;
+  columns: 5; /* texto em 5 colunas */
+  text-align: left;
+  color: #fff;
+  line-height: 1.7;
+}
+.glossario { font-weight: bold; letter-spacing: 2px; color: #000; }
+.rodape small { display: block; margin-top: 10px; font-size: 10px; color: #000; }
+
+/* ===== CELULAR: abaixo de 800px, tudo vira uma coluna ===== */
+@media (max-width: 800px) {
+  .banners, .colunas, .secoes { flex-direction: column; }
+  .mais-buscados { columns: 2; }
+  .banner h2 { font-size: 34px; }
+  .faixa, .faixa-amarela { font-size: 22px; }
+}

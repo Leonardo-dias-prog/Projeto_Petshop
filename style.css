@@ -138,8 +138,7 @@ h1, h2, h3, .logo, .rotulo { font-family: "Lilita One", Arial, sans-serif; font-
   text-align: center;
   font-size: 12px;
 }
-.produto img { max-height: 110px; }
-.produto img[alt="Special Dog Adultos Premium"] { max-height: 150px; transform: translate(0px, 10px); }
+.produto img { max-height: 150px; }
 .produto p { margin: 6px 0 0; }
 .fav { position: absolute; top: 6px; right: 8px; font-size: 18px; }
 

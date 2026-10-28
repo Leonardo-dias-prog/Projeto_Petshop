@@ -115,7 +115,9 @@ h1, h2, h3, .logo, .rotulo { font-family: "Lilita One", Arial, sans-serif; font-
   border-radius: 14px;
   outline: 5px solid var(--laranja-claro); /* contorno laranja por fora */
   outline-offset: 2px;
-}
+  .banner [alt="Gato"] { max-height: 200px; transform: translate(-80px, 10px);
+
+}}
 .grupo h3 {
   position: absolute; /* título "pendurado" na borda de cima */
   top: -18px; left: 50%;

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro - Heros Pet</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="paginas.css">
+  <style>
+    .layout { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+    .senha { position: relative; } .senha button { position: absolute; right: 10px; top: 14px; background: none; border: 0; font-size: 20px; cursor: pointer; }
+    .lateral { background: var(--laranja-claro); text-align: center; font-weight: bold; color: #000; }
+    .linha { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; }
+    @media (max-width: 700px) { .layout { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="cabecalho">
+    <a href="index.html" class="logo">Heros Pet</a>
+    <input type="search" class="busca" placeholder="Para seu pet, você encontra aqui">
+    <nav class="icones">
+      <a href="entrega.html" title="Entrega">🚚</a>
+      <a href="carrinho.html" title="Carrinho">🛒</a>
+      <a href="atendimento.html" title="Atendimento">🎧</a>
+      <a href="login.html" title="Perfil">👤</a>
+      <a href="favoritos.html" title="Favoritos">⭐</a>
+    </nav>
+  </header>
+  <main class="painel">
+    <h2 class="rotulo" id="titulo">Cadastro</h2>
+    <div class="layout">
+      <div class="card" id="logado" hidden></div>
+      <form class="card" id="form">
+        <input class="campo" id="nome" placeholder="Seu nome" hidden>
+        <label class="linha">E-mail ou CPF/CNPJ</label>
+        <input class="campo" id="email" placeholder="Digite o seu e-mail ou CPF/CNPJ">
+        <label class="linha">Senha</label>
+        <div class="senha"><input class="campo" id="senha" type="password" placeholder="Digite a sua Senha"><button type="button" id="olho" title="Mostrar senha">👁</button></div>
+        <button class="btn" style="width:100%" id="enviar">Entrar</button>
+        <p class="msg" id="msg"></p>
+      </form>
+      <aside class="card lateral" id="lateral">
+        <p>Criar uma conta é rápido, fácil e gratuito!</p>
+        <p>Com uma conta você finaliza compras e acompanha os seus pedidos.</p>
+        <button class="btn" type="button" id="alternar">Criar sua conta</button>
+      </aside>
+    </div>
+  </main>
+  <script src="dados.js"></script>
+  <script>
+    let modo = "entrar";
+    const $ = id => document.getElementById(id), msg = $("msg");
+    const aviso = t => { msg.className = "msg erro"; msg.textContent = t; };
+    function atualizar() {
+      const u = usuarioAtual(), cad = modo === "cadastrar";
+      $("form").hidden = $("lateral").hidden = !!u; $("logado").hidden = !u;
+      if (u) { $("logado").innerHTML = `<h3>Olá, ${u.nome}!</h3><p>${u.id}</p><a class="btn" href="entrega.html">Meus pedidos</a> <button class="btn" id="sair">Sair</button>`; $("sair").onclick = () => { sair(); atualizar(); }; }
+      $("nome").hidden = !cad; $("enviar").textContent = cad ? "Cadastrar" : "Entrar";
+      $("alternar").textContent = cad ? "Já tenho conta" : "Criar sua conta"; $("titulo").textContent = cad ? "Criar conta" : "Cadastro";
+    }
+    $("olho").onclick = () => $("senha").type = $("senha").type === "password" ? "text" : "password";
+    $("alternar").onclick = () => { modo = modo === "entrar" ? "cadastrar" : "entrar"; msg.textContent = ""; atualizar(); };
+    $("form").addEventListener("submit", async e => {
+      e.preventDefault();
+      const r = modo === "cadastrar" ? await cadastrar($("nome").value, $("email").value, $("senha").value) : await entrar($("email").value, $("senha").value);
+      if (r !== true) return aviso(r);
+      $("senha").value = ""; msg.textContent = ""; atualizar();
+    });
+    atualizar();
+  </script>
+</body>
+</html>

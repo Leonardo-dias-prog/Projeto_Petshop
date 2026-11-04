@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Favoritos - Heros Pet</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="paginas.css">
+  <style>
+    .fav-item { display: grid; grid-template-columns: 90px 1fr auto; gap: 14px; align-items: center; }
+    .fav-item img { max-height: 90px; display: block; margin: auto; }
+    .fav-item h3 { margin: 0 0 4px; font-family: Arial; font-size: 15px; }
+    .preco { font-family: "Lilita One", Arial; font-size: 24px; }
+    .assin { background: var(--laranja-claro); color: #fff; border-radius: 12px; padding: 6px 10px; font-family: "Lilita One", Arial; }
+    .acoes { display: flex; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+    .desfav { background: none; border: 0; color: var(--azul); font-weight: bold; cursor: pointer; }
+    @media (max-width: 700px) { .fav-item { grid-template-columns: 70px 1fr; } .fav-item > :last-child { grid-column: 1 / -1; } }
+  </style>
+</head>
+<body>
+  <header class="cabecalho">
+    <a href="index.html" class="logo">Heros Pet</a>
+    <input type="search" class="busca" placeholder="Para seu pet, você encontra aqui">
+    <nav class="icones">
+      <a href="entrega.html" title="Entrega">🚚</a>
+      <a href="carrinho.html" title="Carrinho">🛒</a>
+      <a href="atendimento.html" title="Atendimento">🎧</a>
+      <a href="login.html" title="Perfil">👤</a>
+      <a href="favoritos.html" title="Favoritos">⭐</a>
+    </nav>
+  </header>
+  <main class="painel">
+    <h2 class="rotulo">Favoritados</h2>
+    <div id="lista"></div>
+    <p class="msg" id="msg"></p>
+  </main>
+  <script src="dados.js"></script>
+  <script>
+    const q = {};
+    function desenhar() {
+      const l = document.getElementById("lista");
+      const favs = getFavoritos().map(prod).filter(Boolean);
+      l.innerHTML = favs.length ? "" : "<p>Você ainda não favoritou nenhum produto. Clique na ☆ dos produtos da página inicial.</p>";
+      favs.forEach(p => {
+        const d = document.createElement("div"); d.className = "card fav-item";
+        d.innerHTML = `<img src="${p.img}" alt="${p.nome}"><div><h3>${p.nome}</h3>★★★★★</div>
+          <div><div class="preco">${moeda(p.preco)}</div><div class="assin">${moeda(p.assin)} para assinantes</div>
+          <div class="acoes"><button class="btn-mini" data-a="menos" data-id="${p.id}">−</button><b>${q[p.id] || 1}</b>
+          <button class="btn-mini" data-a="mais" data-id="${p.id}">+</button>
+          <button class="btn" data-a="add" data-id="${p.id}">Adicionar ao Carrinho</button>
+          <button class="desfav" data-a="desf" data-id="${p.id}">Desfavoritar ⭐</button></div></div>`;
+        l.appendChild(d);
+      });
+    }
+    document.getElementById("lista").addEventListener("click", e => {
+      const b = e.target.closest("button"); if (!b) return;
+      const id = b.dataset.id, msg = document.getElementById("msg"); msg.textContent = "";
+      if (b.dataset.a === "mais") q[id] = (q[id] || 1) + 1;
+      if (b.dataset.a === "menos") q[id] = Math.max(1, (q[id] || 1) - 1);
+      if (b.dataset.a === "desf") toggleFavorito(id);
+      if (b.dataset.a === "add") { addCarrinho(id, q[id] || 1); msg.textContent = (q[id] || 1) + "x adicionado ao carrinho!"; }
+      desenhar();
+    });
+    desenhar();
+  </script>
+</body>
+</html>

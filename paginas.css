@@ -1,0 +1,10 @@
+/* Estilos compartilhados pelas páginas internas (favoritos, login, entrega, atendimento) */
+.painel { max-width: 1000px; margin: 20px auto; border: 4px solid var(--azul); border-radius: 20px; padding: 20px; }
+.rotulo { display: block; width: fit-content; margin: 0 auto 16px; background: var(--azul); color: #fff; padding: 8px 28px; border-radius: 14px; font-size: 24px; }
+.card { background: var(--card); border: 3px solid var(--laranja-claro); border-radius: 16px; padding: 16px; margin-bottom: 14px; }
+.btn { background: var(--azul); color: #fff; border: 0; border-radius: 12px; padding: 12px 18px; font-family: "Lilita One", Arial; font-size: 18px; cursor: pointer; }
+.btn-mini { background: var(--amarelo); color: var(--azul); border: 0; border-radius: 8px; width: 34px; height: 34px; font-weight: bold; font-size: 18px; cursor: pointer; }
+.campo { width: 100%; padding: 12px; border: 0; border-radius: 10px; background: var(--azul); color: #fff; font-size: 16px; margin: 4px 0 12px; }
+.campo::placeholder { color: #c9d6f2; }
+.msg { font-weight: bold; margin-top: 8px; }
+.erro { color: #c0392b; }

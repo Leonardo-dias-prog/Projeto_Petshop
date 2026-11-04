@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrinho - Heros Pet</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .painel { max-width: 1000px; margin: 20px auto; border: 4px solid var(--azul); border-radius: 20px; padding: 20px; }
+    .rotulo { display: block; width: fit-content; margin: 0 auto 16px; background: var(--azul); color: #fff; padding: 8px 28px; border-radius: 14px; font-size: 24px; }
+    .pedido { background: var(--azul); color: #fff; padding: 6px 18px; border-radius: 12px; display: inline-block; font-family: "Lilita One", Arial; }
+    .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 16px; }
+    .item { display: grid; grid-template-columns: 110px 1fr; gap: 14px; align-items: center; margin-bottom: 14px; }
+    .item .foto { background: var(--card); border: 2px solid var(--laranja-claro); border-radius: 14px; height: 110px; display: flex; align-items: center; justify-content: center; }
+    .item .foto img { max-height: 90px; }
+    .item strong { display: block; margin-bottom: 6px; }
+    .qtd { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+    .qtd button, .remover { border: 0; background: var(--amarelo); color: var(--azul); font-weight: bold; border-radius: 8px; width: 32px; height: 32px; cursor: pointer; font-size: 18px; }
+    .remover { width: auto; padding: 0 10px; font-size: 13px; margin-left: 8px; }
+    .resumo { background: var(--card); border: 3px solid var(--laranja-claro); border-radius: 16px; padding: 16px; }
+    .pagamento { background: var(--laranja); border-radius: 14px; padding: 12px; margin-bottom: 14px; text-align: center; }
+    .pagamento h3 { margin: 0 0 10px; color: #000; }
+    .formas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .formas button { background: var(--card); border: 3px solid var(--amarelo); border-radius: 12px; padding: 14px 4px; font-family: "Lilita One", Arial; color: var(--azul); cursor: pointer; }
+    .formas button.ativo { background: var(--azul); color: #fff; border-color: var(--azul); }
+    .linha { display: flex; justify-content: space-between; margin: 6px 0; font-weight: bold; }
+    .total { font-size: 22px; font-family: "Lilita One", Arial; }
+    #confirmar { width: 100%; margin-top: 12px; background: #a5d96f; color: #000; border: 0; border-radius: 14px; padding: 14px; font-family: "Lilita One", Arial; font-size: 20px; cursor: pointer; }
+    #mensagem { margin-top: 10px; font-weight: bold; text-align: center; }
+    .erro { color: #c0392b; }
+    @media (max-width: 700px) { .layout { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="cabecalho">
+    <a href="index.html" class="logo">Heros Pet</a>
+    <input type="search" class="busca" placeholder="Para seu pet, você encontra aqui">
+    <nav class="icones">
+      <a href="entrega.html" title="Entrega">🚚</a>
+      <a href="carrinho.html" title="Carrinho">🛒</a>
+      <a href="atendimento.html" title="Atendimento">🎧</a>
+      <a href="login.html" title="Perfil">👤</a>
+      <a href="favoritos.html" title="Favoritos">⭐</a>
+    </nav>
+  </header>
+
+  <main class="painel">
+    <h2 class="rotulo">Carrinho de compras</h2>
+    <span class="pedido" id="npedido"></span>
+
+    <div class="layout">
+      <section>
+        <h3>Produto(s)</h3>
+        <div id="lista"></div>
+      </section>
+
+      <section class="resumo">
+        <div class="pagamento">
+          <h3>Formas de pagamento</h3>
+          <div class="formas">
+            <button type="button">PIX</button>
+            <button type="button">BOLETO</button>
+            <button type="button">DÉBITO</button>
+            <button type="button">CRÉDITO</button>
+          </div>
+        </div>
+        <h3>Resumo do pedido:</h3>
+        <div class="linha"><span>Valor subtotal:</span><span id="subtotal"></span></div>
+        <div class="linha"><span>Frete:</span><span id="frete"></span></div>
+        <div class="linha total"><span>Total:</span><span id="total"></span></div>
+        <button type="button" id="confirmar">Confirmar compra</button>
+        <p id="mensagem"></p>
+      </section>
+    </div>
+  </main>
+
+  <script src="dados.js"></script>
+  <script>
+    let pagamento = "";
+    function desenhar() {
+      const c = getCarrinho().filter(i => prod(i.id)), lista = document.getElementById("lista");
+      lista.innerHTML = c.length ? "" : "<p>Seu carrinho está vazio. Adicione produtos na página inicial.</p>";
+      let sub = 0;
+      c.forEach(i => {
+        const p = prod(i.id); sub += p.preco * i.qtd;
+        const div = document.createElement("div"); div.className = "item";
+        div.innerHTML = `<div class="foto"><img src="${p.img}" alt="${p.nome}"></div><div><strong>${p.nome}</strong>${moeda(p.preco)} cada
+          <div class="qtd"><button type="button" data-a="menos" data-id="${p.id}">−</button><span>Quantidade (${i.qtd}x)</span>
+          <button type="button" data-a="mais" data-id="${p.id}">+</button>
+          <button type="button" class="remover" data-a="remover" data-id="${p.id}">Remover</button></div></div>`;
+        lista.appendChild(div);
+      });
+      const fr = c.length ? FRETE : 0;
+      document.getElementById("subtotal").textContent = moeda(sub);
+      document.getElementById("frete").textContent = moeda(fr);
+      document.getElementById("total").textContent = moeda(sub + fr);
+      document.getElementById("npedido").textContent = "Pedido Nº " + proximoPedido();
+    }
+    document.getElementById("lista").addEventListener("click", e => {
+      const b = e.target.closest("button"); if (!b) return;
+      const i = getCarrinho().find(x => x.id === b.dataset.id);
+      if (b.dataset.a === "mais") setQtd(i.id, i.qtd + 1);
+      if (b.dataset.a === "menos") setQtd(i.id, i.qtd - 1);
+      if (b.dataset.a === "remover") removerCarrinho(i.id);
+      desenhar();
+    });
+    document.querySelectorAll(".formas button").forEach(b => b.addEventListener("click", () => {
+      document.querySelectorAll(".formas button").forEach(x => x.classList.remove("ativo"));
+      b.classList.add("ativo"); pagamento = b.textContent;
+    }));
+    document.getElementById("confirmar").addEventListener("click", () => {
+      const msg = document.getElementById("mensagem"); msg.className = "erro";
+      if (!getCarrinho().length) return msg.textContent = "Adicione produtos ao carrinho.";
+      if (!pagamento) return msg.textContent = "Escolha uma forma de pagamento.";
+      if (!usuarioAtual()) return msg.innerHTML = 'Entre na sua conta para finalizar. <a href="login.html">Ir para o login</a>';
+      const ped = criarPedido(pagamento); msg.className = "";
+      msg.innerHTML = "Pedido Nº " + ped.numero + " confirmado no " + pagamento + " (pagamento simulado)! <a href='entrega.html'>Acompanhar entrega</a>";
+      desenhar();
+    });
+    desenhar();
+  </script>
+</body>
+</html>

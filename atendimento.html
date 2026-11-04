@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atendimento - Heros Pet</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="paginas.css">
+  <style>
+    details { background: var(--laranja); border-radius: 12px; margin-bottom: 8px; padding: 14px 18px; color: #000; font-weight: bold; }
+    summary { cursor: pointer; } details p { font-weight: normal; margin: 10px 0 0; }
+    .contato { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; text-align: center; font-weight: bold; }
+    .contato > div { background: var(--card); border: 3px solid var(--amarelo); border-radius: 12px; padding: 12px 20px; }
+    .contato .icone { font-size: 44px; }
+  </style>
+</head>
+<body>
+  <header class="cabecalho">
+    <a href="index.html" class="logo">Heros Pet</a>
+    <input type="search" class="busca" placeholder="Para seu pet, você encontra aqui">
+    <nav class="icones">
+      <a href="entrega.html" title="Entrega">🚚</a>
+      <a href="carrinho.html" title="Carrinho">🛒</a>
+      <a href="atendimento.html" title="Atendimento">🎧</a>
+      <a href="login.html" title="Perfil">👤</a>
+      <a href="favoritos.html" title="Favoritos">⭐</a>
+    </nav>
+  </header>
+  <main class="painel">
+    <h2 class="rotulo">Canal de Atendimento</h2>
+    <h3>Dúvidas mais frequentes</h3>
+    <details><summary>Como faço para saber o horário de atendimento das unidades?</summary><p>Segunda a sexta das 8h às 21h e aos sábados das 8h às 18h.</p></details>
+    <details><summary>É possível fazer reserva de um produto na loja?</summary><p>Sim. Fale com a gente por e-mail ou chat informando o produto e a unidade.</p></details>
+    <details><summary>Quais produtos estão disponíveis na loja?</summary><p>Veja todos os produtos nas seções de Gatos, Aves, Roedores, Peixes, Cães e Pesca na página inicial.</p></details>
+    <details><summary>Como acompanhar o status do meu pedido?</summary><p>Clique no ícone 🚚 no topo da página para ver as etapas da entrega.</p></details>
+    <div class="card" style="margin-top:16px">
+      <h3 style="text-align:center">Não encontrou o que procura?</h3>
+      <div class="contato">
+        <div><div class="icone">✉️</div>E-mail</div>
+        <div><div class="icone">💬</div>Chat</div>
+        <div>Horário de atendimento<br><br>De Segunda a Sexta das 8h às 21h<br>Aos Sábados das 8h às 18h</div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
